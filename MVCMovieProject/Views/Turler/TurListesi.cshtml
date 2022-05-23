@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TurModel>
+
+@{
+    ViewData["Title"] = "Tür Listesi";
+}
+
+<h2>Turler</h2>
+<br />
+@if(TempData["Mesaj"] != null)
+{
+    <p class="bg-success text-white">@TempData["Mesaj"]</p>
+}
+<a asp-action="OlusturGetir">Yeni Tür</a>
+@if (Model != null && Model.Count() > 0)
+{
+    <p class="bg-info text-black">@Model.Count() kayıt bulundu</p>
+}
+else
+{
+    <p class="bg-warning text-black">Kayıt bulunamadı</p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Adı</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TurModel tur in Model) 
+        {
+            <tr>
+                <td>
+                    @tur.Adi
+                </td>                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@tur.Id">Düzenle</a> 
+                    &nbsp; |&nbsp;
+                    <a asp-action="Details" asp-route-id="@tur.Id">Detaylar</a> 
+                    &nbsp; |&nbsp;
+                    <a asp-action="Delete" asp-route-id="@tur.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

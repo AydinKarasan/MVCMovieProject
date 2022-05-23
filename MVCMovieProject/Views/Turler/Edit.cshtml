@@ -1,0 +1,43 @@
+﻿@model TurModel
+
+@{
+    ViewData["Title"] = "Tür Düzenle";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Tur</h4>
+<hr />
+<div class="row">
+    <div class="col-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false, "" , new {@class = "text-danger"})
+
+            <div class="row mb-3">
+
+                @Html.LabelFor(m => m.Adi, new {@class = "col-2 col-form-label"})
+
+                <div class="col-5">
+                    @Html.TextBoxFor(m => m.Adi, new {@class = "form-control"})
+
+                    @Html.ValidationMessageFor(m=> m.Adi, "",new{ @class="text-danger"})
+                </div>
+            </div>
+
+            @Html.HiddenFor(m=>m.Id)
+
+            <div class="row mb-3">
+                <div class="offset-2 col-5">
+                    <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    &nbsp;&nbsp;
+                    <button type="reset" class="btn btn-outline-primary">Temizle</button>
+                    &nbsp;&nbsp;
+                    <a asp-action="Index">Tür Listesi</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

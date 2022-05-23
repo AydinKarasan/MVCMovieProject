@@ -1,0 +1,24 @@
+﻿@model TurModel
+
+@{
+    ViewData["Title"] = "Tür Detayı";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Tür</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Adi)
+        </dd>       
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Düzenle</a> |
+    <a asp-action="Index">Tür List</a>
+</div>
